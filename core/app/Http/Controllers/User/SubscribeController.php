@@ -33,11 +33,14 @@ class SubscribeController extends Controller
 
     // Gün farkını hesapla
     if ($user->plan_start_date && $user->plan_end_date) {
-        // Carbon kütüphanesini kullanarak tarihler arasındaki gün farkını hesapla
-        $startDate = \Carbon\Carbon::parse($user->plan_start_date);
-        $endDate = \Carbon\Carbon::parse($user->plan_end_date);
-        $planlastdate = $startDate->diffInDays($endDate);
-    }
+     // Carbon kütüphanesini kullanarak tarihler arasındaki gün farkını hesapla
+     $startDate = \Carbon\Carbon::parse($user->plan_start_date);
+     $endDate = \Carbon\Carbon::parse($user->plan_end_date);
+ 
+     // Kalan gün sayısını hesapla
+     $planlastdate = Carbon::now()->diffInDays($endDate, false); // İkinci argüman negatif gün sayısına izin verir
+ }
+ 
 
     return view($this->activeTheme . '.user.subscription', 
         compact('plan', 'start_date', 'expiry_date', 'planlastdate'));

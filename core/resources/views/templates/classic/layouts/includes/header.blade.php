@@ -1,4 +1,6 @@
-<!-- Wrapper -->
+@php
+$posts = request()->user()->posts;
+@endphp   
 <div id="wrapper" class="">
     <!-- Header Container
     ================================================== -->
@@ -38,122 +40,186 @@
         @endif
     @endauth
     <!-- Header -->
-        <div id="header">
-            <div class="container">
-                <!-- Left Side Content -->
-                <div class="left-side">
-                    <!-- Logo -->
-                    <div id="logo">
-                        <a href="{{ route('home') }}">
-                            @php
-                                $logo_white = asset('storage/logo/'.$settings->site_logo_footer);
-                                $logo_dark = asset('storage/logo/'.$settings->site_logo);
-                            @endphp
-                            <img src="{{ $logo_dark }}" data-sticky-logo="{{ $logo_dark }}"
-                                 data-transparent-logo="{{ $logo_white }}" alt="{{ @$settings->site_title }}">
-                        </a>
-                    </div>
+    <section class="tw-bg-transparent ">
+     <nav class="navbar navbar-expand-lg navbar-dark tw-bg-gradient-to-b tw-from-sky-500 tw-to-sky-600 tw-rounded-b-full">
+ <span class="app-brand-logo demo tw-ml-12 ">
+          <img width="50" class="" src="{{ asset('storage/logo/'.$settings->site_admin_logo) }}" alt="{{ @$settings->site_title }}" />
+      </span>
+          <div class="container position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#nav01" aria-controls="nav01" aria-expanded="false">
+              
+         <div class=" collapse navbar-collapse position-absolute top-50 start-50 translate-middle" id="nav01">
+           <ul class="navbar-nav">
+               <li class="nav-item"><a class="nav-link" href="{{ route('restaurants.index') }}"><i
+                    class="far fa-utensils"></i> {{ ___('My Restaurants') }}
+            </a></li>
+            <li class="nav-item {{ request()->route()->getName() == 'tables' ? 'active' : '' }} tablepage"><a class="nav-link"
+               href="#"><i
+                   class="far fa-mug-hot"></i> {{ ___('My_tables') }}</a>
+       </li> 
+   
+       <li class="nav-item {{ request()->route()->getName() == 'restaurants.orders' ? 'active' : '' }}"><a class="nav-link"
+          href="{{ route('restaurants.orders') }}"><i
+              class="icon-feather-package"></i> {{ ___('Orders') }}</a></li>
+           
 
-                </div>
-                <!-- Left Side Content / End -->
 
+          
+           </ul>
+      
+         </div>
+         <div class="tw-absolute  tw-right-12 md:tw-bottom-4 header-widget ">
 
-                <!-- Right Side Content / End -->
-                <div class="right-side">
-                @auth
+          <!-- Messages -->
+          <div class="header-notifications user-menu">
+            
+              <div class="header-notifications-trigger">
+                  <a href="#">
+                      <div class="user-avatar status-online"><img
+                              src="{{ asset('storage/profile/'.request()->user()->image) }}"
+                              alt="{{ request()->user()->username }}">
+                           
+                           </div>
+                  </a>
+                  
+              </div>
+              <!-- Dropdown -->
+              <div class="header-notifications-dropdown">
+                  <ul class="user-menu-small-nav">
+                      @if(request()->user()->isAdmin())
+                          <li><a href="{{ route('admin.dashboard') }}" target="_blank"><i
+                                      class="icon-feather-external-link"></i> {{ ___('Admin') }}
+                              </a></li>
+                      @endif
+                     
+                      <li><a href="{{ route('settings') }}"><i
+                                  class="icon-feather-settings"></i> {{ ___('Account Setting') }}
+                          </a></li>
+                       
 
-                    <!-- User Menu -->
-                        <div class="header-widget">
+                       
+                              <li><a href="{{ route('subscription') }}"><i
+                                   class="icon-feather-gift"></i> {{ ___('Membership') }}
+                           </a></li>
 
-                            <!-- Messages -->
-                            <div class="header-notifications user-menu">
-                                <div class="header-notifications-trigger">
-                                    <a href="#">
-                                        <div class="user-avatar status-online"><img
-                                                src="{{ asset('storage/profile/'.request()->user()->image) }}"
-                                                alt="{{ request()->user()->username }}"></div>
-                                    </a>
-                                </div>
-                                <!-- Dropdown -->
-                                <div class="header-notifications-dropdown">
-                                    <ul class="user-menu-small-nav">
-                                        @if(request()->user()->isAdmin())
-                                            <li><a href="{{ route('admin.dashboard') }}" target="_blank"><i
-                                                        class="icon-feather-external-link"></i> {{ ___('Admin') }}
-                                                </a></li>
-                                        @endif
-                                        <li><a href="{{ route('dashboard') }}"><i
-                                                    class="icon-feather-grid"></i> {{ ___('Dashboard') }}
-                                            </a></li>
-                                        <li><a href="{{ route('restaurants.create') }}"><i
-                                                    class="icon-feather-plus-square"></i> {{ ___('Add Restaurant') }}
-                                            </a></li>
-                                        <li><a href="{{ route('restaurants.index') }}"><i
-                                                    class="far fa-utensils"></i> {{ ___('My Restaurants') }}
-                                            </a></li>
-                                        <li><a href="{{ route('settings') }}"><i
-                                                    class="icon-feather-settings"></i> {{ ___('Account Setting') }}
-                                            </a></li>
-                                            <li><a href="{{ route('subscription') }}"><i
-                                                        class="icon-feather-gift"></i> {{ ___('Membership') }}
-                                                </a></li>
-                                        <li><a href="{{ route('transactions') }}"><i
-                                                    class="icon-feather-file-text"></i> {{ ___('Transactions') }}
-                                            </a></li>
-                                        <li><a href="{{ route('logout') }}"
-                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                                    class="icon-feather-log-out"></i> {{ ___('Logout') }}
-                                            </a></li>
-                                    </ul>
-                                    <form id="logout-form" class="d-inline" action="{{ route('logout') }}"
-                                          method="POST">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </div>
+                          <li><a href="{{ route('feedbacks') }}"><i
+                              class="far fa-thumbs-up"></i> {{ ___('feedbacks') }}
+                      </a></li>
+                      <li><a href="{{ route('integrations') }}"><i
+                         class="far fa-rocket"></i> {{ ___('integrations') }}
+                 </a></li>
+                      <li><a href="{{ route('logout') }}"
+                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                  class="icon-feather-log-out"></i> {{ ___('Logout') }}
+                          </a></li>
+                  </ul>
+                  <form id="logout-form" class="d-inline" action="{{ route('logout') }}"
+                        method="POST">
+                      @csrf
+                  </form>
+              </div>
+          </div>
 
-                        </div>
-                        <!-- User Menu / End -->
-                    @endauth
-                    @guest
-                        <div class="header-widget">
-                            <a href="#sign-in-dialog"
-                               class="popup-with-zoom-anim button ripple-effect">{{ ___('Join Now') }}</a>
-                        </div>
-                    @endguest
-
-                    @if($settings->userlangsel)
-                        @php
-                            $language = current_language();
-                        @endphp
-                        <div class="header-widget">
-                            <div class="btn-group bootstrap-select language-switcher">
-                                <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown"
-                                        title="{{ $language->name }}">
-                                    <span class="filter-option pull-left"
-                                          id="selected_lang">{{ strtoupper($language->code) }}</span>&nbsp;
-                                    <span class="caret"></span>
-                                </button>
-                                <div class="dropdown-menu scrollable-menu open">
-                                    <ul class="dropdown-menu inner">
-                                        @foreach($languages as $language)
-                                            <li data-lang="{{ $language->code }}">
-                                                <a role="menuitem" tabindex="-1" rel="alternate"
-                                                   href="{{ lang_url($language->code) }}">{{ $language->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-                <!-- Right Side Content / End -->
-
-            </div>
-        </div>
+      </div>
+       </div>
+     </nav>
+     <div class="d-none navbar-menu position-fixed top-0 start-0 bottom-0 w-100 mw-sm" style="z-index: 9999;">
+       <div class="navbar-close navbar-backdrop position-fixed top-0 start-0 end-0 bottom-0 bg-primary-dark bg-opacity-25"></div>
+       <nav class="position-relative h-100 w-100 d-flex flex-column pt-8 pb-10 px-8 bg-black overflow-auto">
+         <div class="d-flex align-items-center justify-content-between mb-16"><a class="d-inline-block text-decoration-none" href="#"><img class="img-fluid" src="nightsable-assets/logos/logo.svg" alt=""></a><a class="navbar-close text-primary" href="#">
+             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+               <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" fill="currentColor"></path>
+             </svg></a></div>
+         <ul class="nav flex-column my-auto">
+           <li class="nav-item mb-1"><a class="btn text-white ps-4 text-start w-100 fw-normal" href="#">Home</a></li>
+           <li class="nav-item mb-1"><a class="btn text-white ps-4 text-start w-100 fw-normal" href="#">About us</a></li>
+           <li class="nav-item mb-1"><a class="btn text-white ps-4 text-start w-100 fw-normal" href="#">Wallet</a></li>
+           <li class="nav-item mb-1"><a class="btn text-white ps-4 text-start w-100 fw-normal" href="#">Blog</a></li>
+         </ul><a class="btn mt-8 w-100 btn-outline-light" href="#">Get in touch</a>
+       </nav>
+       
+     </div>
+   </section>
         <!-- Header / End -->
 
     </header>
     <div class="clearfix"></div>
-    <!-- Header Container / End -->
+
+ <div id="tablepage-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+          
+      
+      <!--Tabs -->
+              <div class="sign-in-form">
+                  <ul class="popup-tabs-nav">
+                      <li><a>{{___('My Tables')}}</a></li>
+                  </ul>
+                 
+      
+                  <div class="popup-tabs-container">
+      
+      
+      
+      
+                      <!-- Tab -->
+                      <div class="popup-tab-content">
+                          <form action="#" method="post" id="selectPost">
+                              @csrf
+                              <div class="submit-field">
+                      
+                               <label for="menu" class="with-border block text-sm font-medium text-gray-700">{{ ___('Name') }}</label>
+                               <select id="menu" name="name" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+      
+                                   @foreach ($posts as $post)
+          <option data-item="{{ $post->id }}">{{$post->title}}</option>
+      @endforeach
+                               </select> 
+                          
+                          </div>
+                              <!-- Button -->
+                              <button class=" margin-top-0 button button-sliding-icon ripple-effect"
+                                      type="submit">{{___('Select')}} <i class="icon-material-outline-arrow-right-alt"></i>
+                              </button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      <script>
+      
+      
+      $('.tablepage').on('click', function (e) {
+              e.preventDefault();
+              
+              $('#selectPost').trigger('reset');
+      
+              $.magnificPopup.open({
+                  items: {
+                      src: '#tablepage-dialog',
+                      type: 'inline',
+                      fixedContentPos: false,
+                      fixedBgPos: true,
+                      overflowY: 'auto',
+                      closeBtnInside: true,
+                      preloader: false,
+                      midClick: true,
+                      removalDelay: 300,
+                      mainClass: 'my-mfp-zoom-in'
+                  }
+              });
+      
+              $("#selectPost").on("submit",function(e){
+      e.preventDefault();
+      
+      
+      var selectedOption= $("#menu option:selected");
+      var postId= selectedOption.data("item");
+      if (postId) {
+           var redirectUrl = "{{ route('restaurants.tablemanage', ':id') }}".replace(':id', postId);
+      
+      // Tarayıcıyı yeni route'a yönlendir
+      window.location.href = redirectUrl;
+      }
+                
+              });
+          });
+      
+      </script>

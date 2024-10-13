@@ -1,3 +1,29 @@
+@if(!$isUserSubscriber)
+@extends($activeTheme.'layouts.app')
+@section('title', ___('All Restaurants'))
+@section('content')
+
+ <div class="tw-bg-white tw-rounded-lg tw-shadow-lg tw-p-3 tw-mb-2 tw-flex tw-flex-col tw-items-start">
+     <div class="tw-flex tw-justify-between tw-w-full">
+       <div class="tw-text-lg tw-font-semibold tw-text-zinc-900"></div>
+       
+     
+     </div>
+     <div class="tw-mt-2 tw-text-sm tw-text-zinc-600">
+      
+       <span>{{___('purchase_plan')}}</span>
+     </div>
+     <div class="tw-mt-2 tw-text-sm tw-text-zinc-700">
+    
+       
+     </div>
+   </div>
+    </div>
+    @endsection
+@push('scripts_at_bottom')
+
+@endpush
+@else 
 @extends($activeTheme.'layouts.app')
 @section('title', ___('Orders').' - '.$post->title)
 @if(!empty($menu_languages))
@@ -44,7 +70,8 @@
     <div class="dashboard-box main-box-in-row">
         <div class="headline">
             <h3><i class="icon-feather-activity"></i> {{___('Orders')}}</h3>
-
+            <a href="javascript:void(0)" class="margin-left-auto order-notification-sound" data-tippy-placement="top"
+               title="{{___('Notification Sound')}}"><i class="icon-feather-volume-2"></i></a>
         </div>
         <div class="content with-padding">
         
@@ -52,8 +79,8 @@
                 <table class="basic-table dashboard-box-list" id="qr-orders-table">
                     <thead>
                     <tr>
-                        <th>{{___('Table No. / Type')}}</th>
-                        <th  class="w-24">{{___('Menu')}}</th>
+                        <th class="w-100">{{___('Table No. / Type')}}</th>
+                        <th>{{___('Menu')}}</th>
                         <th>{{___('Customer')}}</th>
                         <th>{{___('Price')}}</th>
                         <th>{{___('Status')}}</th>
@@ -128,3 +155,4 @@
 <script src="{{ asset($activeThemeAssets.'js/orders.js?var='.config('appinfo.version')) }}"></script>
 
     @endpush
+@endif

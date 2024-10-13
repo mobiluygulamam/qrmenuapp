@@ -18,6 +18,7 @@
 @stack('styles_vendor')
 
 <link rel="stylesheet" href="{{ asset($activeThemeAssets.'css/style.css') }}">
+<link rel="stylesheet" href="{{ asset($activeThemeAssets.'css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset($activeThemeAssets.'css/color.css') }}">
 @if(current_language()->direction == 'rtl')
     <link rel="stylesheet" href="{{ asset($activeThemeAssets.'css/rtl.css') }}">

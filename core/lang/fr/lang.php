@@ -848,4 +848,5 @@ return array (
   'cancel_recurring' => 'Cancel Recurring',
   'cancel' => 'Cancel',
   'cancelled_successfully' => 'Cancelled Successfully',
+  'rating' => 'rating',
 );

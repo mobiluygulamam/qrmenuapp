@@ -1,8 +1,8 @@
 @extends('admin.layouts.main')
 @section('title', ___('Restaurants'))
 @section('content')
-    <div class="quick-card card">
-        <div class="card-body">
+    <div class="quick-card card  ">
+        <div class="card-body ">
             <div class="dataTables_wrapper">
                 <table class="table table-striped" id="ajax_datatable" data-jsonfile="{{ route('admin.posts.index') }}">
                     <thead>

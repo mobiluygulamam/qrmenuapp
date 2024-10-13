@@ -1261,5 +1261,19 @@
                 })).selectpicker('refresh');
             }
         });
+        const inputElement = document.getElementById('restaurant-name');
+        const formattedInputElement = document.getElementById('store-slug');
+        
+        // Input eventine dinleyici ekliyoruz
+        inputElement.addEventListener('input', function(event) {
+            let inputValue = event.target.value;
+
+            // Boşluk karakterlerini "-" ile değiştir
+            inputValue = inputValue.trim(); // Baştaki ve sondaki boşlukları kaldır
+            inputValue = inputValue.replace(/\s+/g, '-'); // Bir veya daha fazla boşluğu "-" ile değiştir
+            
+            // Değeri ikinci input alanına atıyoruz
+            formattedInputElement.value = inputValue;
+        });
     </script>
 @endpush

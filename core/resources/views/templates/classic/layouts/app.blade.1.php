@@ -4,9 +4,8 @@
 <head>
 
 
-
     @include($activeTheme.'layouts.includes.head')
-
+    {!! $integrationHelper->getHeadScripts([]) !!}
     @include($activeTheme.'layouts.includes.styles')
     {!! head_code() !!}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,8 +24,8 @@
 
 
 <!-- Dashboard Container -->
-<div class="dashboard-container -ml-6">
-    
+<div class="dashboard-container">
+    @include($activeTheme.'user.includes.dashboard-sidebar',[])
     <!-- Dashboard Content
         ================================================== -->
     <div class="dashboard-content-container" data-simplebar>
@@ -42,11 +41,17 @@
                     </div>
                 @else
                     <!-- Breadcrumbs -->
-                  
+                    <nav id="breadcrumbs" class="dark">
+                        <ul>
+                            <li><a href="{{ route('home') }}">{{ ___('Home') }}</a></li>
+                            <li>@yield('title')</li>
+                        </ul>
+                    </nav>
                 @endif
             </div>
             <!-- {!! ads_on_dashboard_top() !!} -->
             @yield('content')
+
 
             <!-- {!! ads_on_dashboard_bottom() !!} -->
             <!-- Footer -->

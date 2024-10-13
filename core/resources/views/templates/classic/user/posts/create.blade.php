@@ -21,7 +21,7 @@
                                     <input type="hidden" class="color-input" name="color"
                                            value="{{ old('color') ?? $settings->theme_color }}">
                                 </div>
-                                <input type="text" class="with-border" name="title" value="{{ old('title') }}" required>
+                                <input id="restaurant-name" type="text" class="with-border" name="title" value="{{ old('title') }}" required>
                             </div>
                         </div>
                     </div>
@@ -145,7 +145,20 @@
 
 @push('scripts_at_bottom')
     <script>
-     
+          const inputElement = document.getElementById('restaurant-name');
+        const formattedInputElement = document.getElementById('store-slug');
+        
+        // Input eventine dinleyici ekliyoruz
+        inputElement.addEventListener('input', function(event) {
+            let inputValue = event.target.value;
+
+            // Boşluk karakterlerini "-" ile değiştir
+            inputValue = inputValue.trim(); // Baştaki ve sondaki boşlukları kaldır
+            inputValue = inputValue.replace(/\s+/g, '-'); // Bir veya daha fazla boşluğu "-" ile değiştir
+            
+            // Değeri ikinci input alanına atıyoruz
+            formattedInputElement.value = inputValue;
+        });
     document.getElementById('tablecount').addEventListener('input', function (event) {
         var max = {{ $maxTableCount }};
         var value = parseInt(event.target.value);

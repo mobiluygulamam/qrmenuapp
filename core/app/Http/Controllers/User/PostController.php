@@ -78,7 +78,8 @@ $isUserSubscriber=isUserSubscriber();
    if (!is_null($plan)) {
      $group_id=$plan->id;
    }
-   $maxTableCount=$plan->tablecount;
+   if ($plan->tablecount!=null) 
+ {  $maxTableCount=$plan->tablecount;}
 
     $templates = $this->getPostTemplates();
         return view($this->activeTheme.'.user.posts.create', compact(['templates','maxTableCount']));

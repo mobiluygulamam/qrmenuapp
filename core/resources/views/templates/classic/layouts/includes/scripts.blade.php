@@ -22,6 +22,9 @@
         var rtl = false;
     }
 </script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CPK86GW"
+     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     
 <script src="{{ asset($activeThemeAssets.'js/chosen.min.js') }}"></script>
 <script src="{{ asset('assets/global/js/jquery.lazyload.min.js') }}"></script>
 <script src="{{ asset('assets/global/js/tippy.all.min.js') }}"></script>

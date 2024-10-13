@@ -72,7 +72,7 @@
          @endif
      </td>
      <td data-label="{{___('Time')}}">
-         <small>{{ date_formating($order->created_at, 'd, M Y h:i A') }}</small>
+         <small>{{ date_formating($order->created_at, 'd, M Y h:i ') }}</small>
      </td>
      <td>
          @if($order->status == 'pending')
