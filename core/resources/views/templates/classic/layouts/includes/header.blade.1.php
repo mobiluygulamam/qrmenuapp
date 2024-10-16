@@ -44,107 +44,97 @@ $posts = request()->user()->posts;
           @endauth
           <!-- Header -->
           <section class="tw-bg-transparent ">
-               <nav class="navbar navbar-expand-lg navbar-dark tw-bg-gradient-to-b tw-from-sky-500 tw-to-sky-600 tw-rounded-b-3xl">
-                    <span class="app-brand-logo demo tw-ml-12">
-                        <img width="50" class="" src="{{ asset('storage/logo/'.$settings->site_admin_logo) }}"
-                            alt="{{ @$settings->site_title }}" />
+               <nav
+                    class="navbar navbar-expand-lg navbar-dark tw-bg-gradient-to-b tw-from-sky-500 tw-to-sky-600 tw-rounded-b-3xl">
+                    <span class="app-brand-logo demo tw-ml-12 ">
+                         <img width="50" class="" src="{{ asset('storage/logo/'.$settings->site_admin_logo) }}"
+                              alt="{{ @$settings->site_title }}" />
                     </span>
-                    
-                    <!-- Hamburger Menü Butonu -->
-                    <button class="navbar-toggler tw-mr-3" type="button" data-bs-toggle="collapse" data-bs-target="#nav02"
-                        aria-controls="nav02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span> <!-- Bootstrap'in hazır hamburger ikonu -->
-                    </button>
-                
-                    <div class="container position-relative">
-                        <div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle" id="nav02">
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('restaurants.index') }}"><i
-                                            class="far fa-utensils"></i> {{ ___('My Restaurants') }}
-                                    </a></li>
-                                <li
-                                    class="nav-item {{ request()->route()->getName() == 'tables' ? 'active' : '' }} tablepage">
-                                    <a class="nav-link" href="#"><i class="far fa-mug-hot"></i> {{ ___('My_tables')
-                                         }}</a>
-                                </li>
-                                <li
-                                    class="nav-item {{ request()->route()->getName() == 'restaurants.orders' ? 'active' : '' }}">
-                                    <a class="nav-link" href="{{ route('restaurants.orders') }}"><i
-                                            class="icon-feather-package"></i> {{ ___('Orders') }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                
-               <div class="tw-absolute  tw-right-12 tw-bottom-0 ">
+                    <div class="container position-relative" type="button" data-bs-toggle="collapse"
+                         data-bs-target="#nav01" aria-controls="nav01" aria-expanded="false">
 
-                    <!-- Messages -->
-                    <div class="header-notifications user-menu">
+                         <div class=" collapse navbar-collapse position-absolute top-50 start-50 translate-middle"
+                              id="nav01">
+                              <ul class="navbar-nav">
+                                   <li class="nav-item"><a class="nav-link" href="{{ route('restaurants.index') }}"><i
+                                                  class="far fa-utensils"></i> {{ ___('My Restaurants') }}
+                                        </a></li>
+                                   <li
+                                        class="nav-item {{ request()->route()->getName() == 'tables' ? 'active' : '' }} tablepage">
+                                        <a class="nav-link" href="#"><i class="far fa-mug-hot"></i> {{ ___('My_tables')
+                                             }}</a>
+                                   </li>
 
-                         <div class="header-notifications-trigger">
-                              <a href="#">
+                                   <li
+                                        class="nav-item {{ request()->route()->getName() == 'restaurants.orders' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('restaurants.orders') }}"><i
+                                                  class="icon-feather-package"></i> {{ ___('Orders') }}</a></li>
 
 
-                                   <div class="align-self-sm-center tw-mr-12  user-avatar status-online"><img
-                                             src="{{ asset('storage/profile/'.request()->user()->image) }}"
-                                             alt="{{ request()->user()->username }}">
+
+
+                              </ul>
+
+                         </div>
+                         <div class="tw-absolute  tw-right-12 md:tw-bottom-4 header-widget ">
+
+                              <!-- Messages -->
+                              <div class="header-notifications user-menu">
+
+                                   <div class="header-notifications-trigger">
+                                        <a href="#">
+
+
+                                             <div class="align-self-sm-center tw-mr-12  user-avatar status-online"><img
+                                                       src="{{ asset('storage/profile/'.request()->user()->image) }}"
+                                                       alt="{{ request()->user()->username }}">
+
+                                             </div>
+                                        </a>
 
                                    </div>
-                              </a>
+                                   <!-- Dropdown -->
+                                   <div class="header-notifications-dropdown">
+                                        <ul class="user-menu-small-nav">
+                                             @if(request()->user()->isAdmin())
+                                             <li><a href="{{ route('admin.dashboard') }}" target="_blank"><i
+                                                            class="icon-feather-external-link"></i> {{ ___('Admin') }}
+                                                  </a></li>
+                                             @endif
 
-                         </div>
-                         <!-- Dropdown -->
-                         <div class="header-notifications-dropdown">
-                              <ul class="user-menu-small-nav">
-                                   @if(request()->user()->isAdmin())
-                                   <li><a href="{{ route('admin.dashboard') }}" target="_blank"><i
-                                                  class="icon-feather-external-link"></i> {{ ___('Admin') }}
-                                        </a></li>
-                                   @endif
-
-                                   <li class=" d-lg-none d-xl-none"><a href="{{ route('restaurants.index') }}"><i class="far fa-utensils"></i>
-                                             {{ ___('My Restaurants') }}
-                                        </a></li>
+                                             <li><a href="{{ route('settings') }}"><i class="icon-feather-settings"></i>
+                                                       {{ ___('Account Setting') }}
+                                                  </a></li>
 
 
 
-                                   <li class="d-lg-none d-xl-none">  <a class="nav-link" href="#"><i class="far fa-mug-hot"></i> {{ ___('My_tables')
-                                         }}</a></li>
+                                             <li><a href="{{ route('subscription') }}"><i class="icon-feather-gift"></i>
+                                                       {{ ___('Membership') }}
+                                                  </a></li>
 
+                                             <li><a href="{{ route('feedbacks') }}"><i class="far fa-thumbs-up"></i> {{
+                                                       ___('feedbacks') }}
+                                                  </a></li>
+                                             <li><a href="{{ route('integrations') }}"><i class="far fa-rocket"></i> {{
+                                                       ___('integrations') }}
+                                                  </a></li>
+                                             <li><a href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                                            class="icon-feather-log-out"></i> {{ ___('Logout') }}
+                                                  </a></li>
+                                        </ul>
+                                        <form id="logout-form" class="d-inline" action="{{ route('logout') }}"
+                                             method="POST">
+                                             @csrf
+                                        </form>
+                                   </div>
+                              </div>
 
-                                   <li class="d-lg-none d-xl-none"><a href="{{ ('restaurants.orders') }}"><i class="icon-feather-package"></i>
-                                        {{ ___('Orders') }}
-                                   </a></li>
-                                   <li><a href="{{ route('feedbacks') }}"><i class="far fa-thumbs-up"></i> {{
-                                        ___('feedbacks') }}
-                                   </a></li>
-                              <li><a href="{{ route('integrations') }}"><i class="far fa-rocket"></i> {{
-                                        ___('integrations') }}
-
-                                   <li><a href="{{ route('settings') }}"><i class="icon-feather-settings"></i>
-                                        {{ ___('Account Setting') }}
-                                   </a></li>
-
-
-                                   <li><a href="{{ route('subscription') }}"><i class="icon-feather-gift"></i>
-                                             {{ ___('Membership') }}
-                                        </a></li>
-
-                                  
-                                        </a></li>
-                                   <li><a href="{{ route('logout') }}"
-                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                                  class="icon-feather-log-out"></i> {{ ___('Logout') }}
-                                        </a></li>
-                              </ul>
-                              <form id="logout-form" class="d-inline" action="{{ route('logout') }}"
-                                   method="POST">
-                                   @csrf
-                              </form>
                          </div>
                     </div>
 
-               </div>
+
+               </nav>
                <div class="d-none navbar-menu position-fixed top-0 start-0 bottom-0 w-100 mw-sm" style="z-index: 9999;">
                     <div
                          class="navbar-close navbar-backdrop position-fixed top-0 start-0 end-0 bottom-0 bg-primary-dark bg-opacity-25">

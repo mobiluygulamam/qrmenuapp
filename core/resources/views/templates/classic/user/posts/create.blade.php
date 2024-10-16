@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-xl-6">
                          <label class="form-label" for="field_limit">{{ ___('table_count') }} *</label>
-                         <input name="tablecount" type="number" class="form-control" id="tablecount" value="10" max="{{ $maxTableCount }}">
+                         <input name="tablecount" type="number" class="d-none form-control" id="tablecount" value="100" max="{{ $maxTableCount }}">
 
                      </div>
                      <div class="col-xl-6"></div>
