@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://localhost/laravel_cafe/</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/lang/tr</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/admin/settings</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/password/reset</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/faq</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/signup</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/contact</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/feedback</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/login</loc>
+    
+            </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/lezzet-duragi</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66ddd4d081c881725813968.png</image:loc>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/gurme-bahce</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66dddb35b4a651725815605.png</image:loc>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/ziyafet-sofrasi</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66dddd5163f001725816145.png</image:loc>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/mavi-deniz</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66dddff053d1b1725816816.png</image:loc>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/lokma-duragi</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66dde997069f21725819287.png</image:loc>
+</image:image>
+        </url>
+    <url>
+        <loc>http://localhost/laravel_cafe/kahve-bahcesi</loc>
+    
+    <image:image>
+    <image:loc>http://localhost/laravel_cafe/storage/restaurant/logo/66ddec1fab48b1725819935.png</image:loc>
+</image:image>
+        </url>
+</urlset>
